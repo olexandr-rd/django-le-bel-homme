@@ -1,0 +1,72 @@
+@use 'variables' as var;
+
+
+.info {
+    background: url("../img/backgrounds/info-bg.png") no-repeat 44%;
+    background-size: cover;
+}
+
+#info-cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var.$gap;
+    font-size: 100%;
+
+    article {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+
+        &>* {
+            margin: 0;
+        }
+    }
+
+    #delivery,
+    #pay {
+        max-width: 400px;
+
+        @media screen and (min-width: 768px) {
+            max-width: 500px;
+            width: clamp(250px, 40%, 500px);
+        }
+    }
+
+    .img {
+        width: 100%;
+        aspect-ratio: 7 / 8;
+        border-radius: var.$border-radius;
+        box-shadow: 0 0 50px rgba(var.$black, 0.3);
+    }
+
+    @media screen and (min-width: 768px) {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: var.$main-height calc(var.$side-padding * 2);
+        justify-content: center;
+        align-items: flex-start;
+    }
+}
+
+#delivery {
+    .img {
+        background: url("../img/delivery.png") no-repeat 44%;
+        background-size: cover;
+    }
+}
+
+#pay {
+    .img {
+        background: url("../img/card-pay.png") no-repeat center;
+        background-size: cover;
+    }
+}
+
+#contacts {
+    width: clamp(250px, 100%, 1000px);
+
+    a {
+        color: var.$black;
+    }
+}

@@ -1,0 +1,184 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <section class="intro shop">
+        <h1>Аромати</h1>
+    </section>
+
+    <section id="main-shop">
+
+        <div id="sorting">
+            <button class="sort button" onclick="showSorting('sort-form')"><span>Фільтр</span></button>
+            <button class="brands button" onclick="showSorting('brands-form')">Бренди</button>
+            <button class="search button" onclick="showSorting('search-form')"><span>Пошук</span></button>
+        </div>
+
+        <div id="sorting-blocks">
+            <form action="" id="sort-form">
+                <input type="radio" id="rating" name="sort-way" value="rating" checked>
+                <label for="rating">За рейтингом</label><br>
+
+                <input type="radio" id="ascending" name="sort-way" value="ascending">
+                <label for="ascending">За зростанням ціни</label><br>
+
+                <input type="radio" id="descending" name="sort-way" value="descending">
+                <label for="descending">За спаданням ціни</label>
+            </form>
+
+            <form id="brands-form">
+                <input type="checkbox" id="chanel" name="chanel" checked>
+                <label for="chanel">Chanel</label>
+
+                <input type="checkbox" id="dior" name="dior">
+                <label for="dior">Dior</label>
+
+                <input type="checkbox" id="tom-ford" name="tom-ford">
+                <label for="tom-ford">Tom Ford</label>
+
+                <input type="checkbox" id="versace" name="versace">
+                <label for="versace">Versace</label>
+            </form>
+
+            <form id="search-form">
+                <input type="text" placeholder="Назва парфуму..." required>
+            </form>
+        </div>
+
+        <div class="perfumes">
+
+            <article class="item">
+                <img src="{% static 'img/perfumes/layton-eau-de-parfum.png' %}" alt="Layton eau de parfum" class="img">
+                <a href="{% url 'item' %}" >
+                    <h3 class="name">Layton eau de parfum</h3>
+                </a>
+                <div class="bottom">
+                    <div class="price-volume">
+                        <p>88 EUR</p>
+                        <p>|</p>
+                        <p>100 ml</p>
+                    </div>
+                    <button class="button cart"><span class="fa-sr-only">Придбати</span></button>
+                </div>
+            </article>
+
+            <article class="item">
+                <picture>
+                    <source srcset="{% static 'img/perfumes/bleu-de-chanel.avif' %}" type="image/avif">
+                    <source srcset="{% static 'img/perfumes/bleu-de-chanel.webp' %}" type="image/webp">
+                    <img src="{% static 'img/perfumes/bleu-de-chanel.png' %}" alt="Blue de Chanel" class="img">
+                </picture>
+
+                <a href="{% url 'item' %}">
+                    <h3 class="name">Bleu de Chanel</h3>
+                </a>
+                <div class="bottom">
+                    <div class="price-volume">
+                        <p>90 EUR</p>
+                        <p>|</p>
+                        <p>50 ml</p>
+                    </div>
+                    <button class="button cart"><span class="fa-sr-only">Придбати</span></button>
+                </div>
+            </article>
+
+            <article class="item">
+                <img src="{% static 'img/perfumes/Guerlain-L’Homme-Idéal.png' %}" alt="Guerlain L’Homme Idéal" class="img">
+                <a href="{% url 'item' %}">
+                    <h3 class="name">Guerlain L’Homme Idéal</h3>
+                </a>
+                <div class="bottom">
+                    <div class="price-volume">
+                        <p>92 EUR</p>
+                        <p>|</p>
+                        <p>75 ml</p>
+                    </div>
+                    <button class="button cart"><span class="fa-sr-only">Придбати</span></button>
+                </div>
+            </article>
+
+            <article class="item">
+                <img src="{% static 'img/perfumes/GIVENCHY-GENTLEMAN.png' %}" alt="GIVENCHY GENTLEMAN" class="img">
+                <a href="{% url 'item' %}">
+                    <h3 class="name">Givency Gentelman</h3>
+                </a>
+                <div class="bottom">
+                    <div class="price-volume">
+                        <p>109 EUR</p>
+                        <p>|</p>
+                        <p>100 ml</p>
+                    </div>
+                    <button class="button cart"><span class="fa-sr-only">Придбати</span></button>
+                </div>
+            </article>
+
+            <article class="item">
+                <img src="{% static 'img/perfumes/layton-eau-de-parfum.png' %}" alt="Layton eau de parfum" class="img">
+                <a href="{% url 'item' %}" >
+                    <h3 class="name">Layton eau de parfum</h3>
+                </a>
+                <div class="bottom">
+                    <div class="price-volume">
+                        <p>88 EUR</p>
+                        <p>|</p>
+                        <p>100 ml</p>
+                    </div>
+                    <button class="button cart"><span class="fa-sr-only">Придбати</span></button>
+                </div>
+            </article>
+
+            <article class="item">
+                <picture>
+                    <source srcset="{% static 'img/perfumes/bleu-de-chanel.avif' %}" type="image/avif">
+                    <source srcset="{% static 'img/perfumes/bleu-de-chanel.webp' %}" type="image/webp">
+                    <img src="{% static 'img/perfumes/bleu-de-chanel.png' %}" alt="Blue de Chanel" class="img">
+                </picture>
+
+                <a href="{% url 'item' %}">
+                    <h3 class="name">Bleu de Chanel</h3>
+                </a>
+                <div class="bottom">
+                    <div class="price-volume">
+                        <p>90 EUR</p>
+                        <p>|</p>
+                        <p>50 ml</p>
+                    </div>
+                    <button class="button cart"><span class="fa-sr-only">Придбати</span></button>
+                </div>
+            </article>
+
+            <article class="item">
+                <img src="{% static 'img/perfumes/Guerlain-L’Homme-Idéal.png' %}" alt="Guerlain L’Homme Idéal" class="img">
+                <a href="{% url 'item' %}">
+                    <h3 class="name">Guerlain L’Homme Idéal</h3>
+                </a>
+                <div class="bottom">
+                    <div class="price-volume">
+                        <p>92 EUR</p>
+                        <p>|</p>
+                        <p>75 ml</p>
+                    </div>
+                    <button class="button cart"><span class="fa-sr-only">Придбати</span></button>
+                </div>
+            </article>
+
+            <article class="item">
+                <img src="{% static 'img/perfumes/GIVENCHY-GENTLEMAN.png' %}" alt="GIVENCHY GENTLEMAN" class="img">
+                <a href="{% url 'item' %}">
+                    <h3 class="name">Givency Gentelman</h3>
+                </a>
+                <div class="bottom">
+                    <div class="price-volume">
+                        <p>109 EUR</p>
+                        <p>|</p>
+                        <p>100 ml</p>
+                    </div>
+                    <button class="button cart"><span class="fa-sr-only">Придбати</span></button>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+{% endblock %}

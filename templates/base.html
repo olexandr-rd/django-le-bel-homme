@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Le Bel Homme</title>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+    <script src="{% static 'js/script.js' %}"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+          rel="stylesheet">
+    <script src="https://kit.fontawesome.com/72cdf14cdd.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<header>
+    <a href="{% url 'index' %}" class="site-title">
+        <img src="{% static 'img/Le Bel Homme.svg' %}" alt="Логотип Le Bel Homme" class="site-logo">
+    </a>
+    <button id="menu-button" onclick="showMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <nav id="menu">
+        <a href="{% url 'shop' %}">Аромати</a>
+        <a href="{% url 'info' %}">Інфо</a>
+        <a href="{% url 'cart' %}">Кошик</a>
+        {% if request.COOKIES.username %}
+            <p>Привіт, {{ request.COOKIES.username }}!</p>
+            <a href="{% url 'logout' %}">Вийти</a>
+        {% else %}
+            <a href="{% url 'login' %}">Вхід</a>
+        {% endif %}
+    </nav>
+</header>
+
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+
+<footer>
+    <div>
+        <img src="{% static 'img/Le Bel Homme.svg' %}" alt="Логотип Le Bel Homme" class="site-logo">
+        <div class="social">
+            <a href="https://www.facebook.com/" target="_blank" class="fa-brands fa-facebook-f"><span
+                    class="fa-sr-only">Facebook</span></a>
+            <a href="https://www.instagram.com/" target="_blank" class="fa-brands fa-instagram"><span
+                    class="fa-sr-only">Instagram</span></a>
+            <a href="https://www.twitter.com/" target="_blank" class="fa-brands fa-twitter"><span
+                    class="fa-sr-only">Twitter</span></a>
+            <a href="https://web.telegram.org/k/" target="_blank" class="fa-brands fa-telegram"><span
+                    class="fa-sr-only">Telegram</span></a>
+        </div>
+        <p class="copyright">© 2023 Le Bel Homme</p>
+    </div>
+
+    <div>
+        <h3>Навігація</h3>
+        <nav>
+            <a href="{% url 'index' %}">Головна</a>
+            <a href="{% url 'shop' %}">Аромати</a>
+            <a href="{% url 'info' %}">Інфо</a>
+            <a href="{% url 'cart' %}">Кошик</a>
+        </nav>
+    </div>
+
+    <div>
+        <h3>Оновлення</h3>
+        <p id="subscribe-message">Сповіщатимемо тебе про нові товари й надсилатимемо поради</p>
+        <form id="subscribe" onsubmit="subscribe(); return false">
+            <label for="subscribe-email">Е-пошта</label>
+            <input type="email" name="email" id="subscribe-email" placeholder="lebel@homme.com" required>
+            <button type="submit" id="subscribe-button"><span class="fa-sr-only">Відправити</span></button>
+        </form>
+    </div>
+</footer>
+</body>
+</html>
+

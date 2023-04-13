@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="item-wrapper">
+    <h1>Вхід</h1>
+    <form id="login-form" method="POST">
+        {% csrf_token %}
+
+        <label for="username">Ім'я користувача</label>
+        <input name="username" id="username" type="text">
+
+        <label for="password">Пароль</label>
+        <input name="password" id="password" type="password">
+
+        <button type="submit" class="button">Увійти</button>
+    </form>
+    </div>
+
+{% endblock %}

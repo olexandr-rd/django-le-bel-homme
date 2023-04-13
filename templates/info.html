@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <section class="intro info">
+        <h1>Інфо</h1>
+    </section>
+
+    <section id="info-cards">
+        <article id="delivery">
+            <h2>Доставка</h2>
+            <div class="img"></div>
+            <p>Доставка за наш кошт прямо тобі додому</p>
+        </article>
+
+        <article id="pay">
+            <h2>Оплата</h2>
+            <div class="img"></div>
+            <p>Оплата Apple Pay, Google Pay або ж картою</p>
+        </article>
+
+        <article id="contacts">
+            <h2>Контакти</h2>
+            <p>Залишились питання?</p>
+            <p>Телефонуй або ж пиши в телеграм: <br>
+                <a href="tel:+380687771104">+38 068 777 11 04</a>
+            </p>
+            <p>Для співпраці або колаборацій пиши на мейл:<br>
+                <a href="mailto:">lebel@homme.com</a>
+            </p>
+        </article>
+
+    </section>
+
+
+{% endblock %}

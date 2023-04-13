@@ -1,0 +1,139 @@
+@use 'variables' as var;
+
+.shop-cart {
+    background: url("../img/backgrounds/cart-bg.png") no-repeat center;
+    background-size: cover;
+}
+
+#cart-body {
+    display: flex;
+    flex-direction: column;
+    gap: var.$gap;
+
+    @media screen and (min-width: 1024px) {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+}
+
+#cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: var.$gap;
+    align-items: center;
+    font-size: 90%;
+    @media screen and (min-width: 1024px) {
+        gap: calc(var.$gap * 1.5);
+    }
+}
+
+#cart-items .item {
+    width: 100%;
+    $gap: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: $gap;
+
+    .img {
+        max-width: 250px;
+    }
+
+    @media screen and (min-width: 540px) {
+        width: clamp(450px, 100%, 900px);
+        justify-content: flex-start;
+        text-align: left;
+        flex-direction: row;
+    }
+
+    .column {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: $gap;
+        align-self: stretch;
+    }
+
+    .name {
+        font-size: 170%;
+    }
+
+    .price-volume {
+        font: 600 150% var.$font-family;
+    }
+
+}
+
+#cart-items .item .bottom {
+    display: flex;
+    align-items: center;
+
+    .button,
+    input {
+        height: 40px;
+        border-radius: calc(var.$border-radius / 2);
+        box-shadow: 0 0 70px rgba(var.$black, 0.3);
+    }
+
+    .button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Fontawesome";
+        width: 40px;
+    }
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+
+    input {
+        width: 60px;
+        border: none;
+        outline: none;
+        font: bold 20px var.$font-family;
+        text-align: center;
+    }
+}
+
+#order {
+    font-size: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(var.$gap / 2);
+
+    p {
+        font-size: 200%;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    .button {
+        min-width: fit-content;
+        padding: 0 var.$gap;
+    }
+
+    @media screen and (min-width: 1024px) {
+        position: sticky;
+        top: calc(var.$main-height * 2);
+        align-self: flex-start;
+        z-index: 1;
+    }
+}
+
+.delete::after {
+    content: "\f1f8";
+}
+
+.plus::after {
+    content: "\2b";
+}
+
+.minus::after {
+    content: "\f068";
+}

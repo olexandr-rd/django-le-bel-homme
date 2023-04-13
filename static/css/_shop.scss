@@ -1,0 +1,88 @@
+@use 'variables' as var;
+
+.shop {
+    background: url("../img/backgrounds/shop-bg.png") no-repeat center;
+    background-size: cover;
+}
+
+#main-shop {
+    display: flex;
+    flex-direction: column;
+    gap: var.$gap;
+    align-items: center;
+}
+
+#main-shop #sorting {
+
+    width: 100%;
+    display: flex;
+    gap: clamp(calc(var.$gap / 5), 5vw, var.$gap);
+    justify-content: space-between;
+
+    .button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        background: var.$white;
+        color: var.$black;
+        span {
+            font-family: var.$font-family;
+            display: none;   
+        }
+    }
+
+    .brands {
+        width: calc(100% - 2 * 55px - var.$gap / 5 * 2);
+        @media screen and (min-width: 768px) {
+            width: calc(100% - 2 * 200px - var.$gap / 5 * 2);
+        }
+    }
+
+    .sort, .search {
+        font-family: "Fontawesome";
+        width: 55px;
+        @media screen and (min-width: 768px) {
+            width: 200px;
+            span {
+                display: inline-block;
+            } 
+        }
+    }
+
+    .sort::before {
+        content: "\f0b0";
+    }
+
+    .search::before {
+        content: "\f002";
+    }
+}
+
+#sorting-blocks {
+    width: 100%;
+}
+
+#sorting-blocks form {
+    display: none;
+    border-radius: var.$border-radius;
+    width: 100%;
+    padding: 20px;
+    background-color: var.$white;
+    box-shadow: 0 0 50px rgba(var.$black, 0.3);
+
+    input[type="text"] {
+        width: 100%;
+        border: none;
+        border-radius: 10px;
+        font-size: 120%;
+        padding: 5px;
+        height: 50px;
+        font-family: var.$font-family;
+
+        &::placeholder {
+            color: var.$black;
+        
+        }
+    }
+} 

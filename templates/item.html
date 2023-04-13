@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="item-wrapper">
+            <article class="item">
+                <picture>
+                    <source srcset="{% static 'img/perfumes/bleu-de-chanel.avif' %}" type="image/avif">
+                    <source srcset="{% static 'img/perfumes/bleu-de-chanel.webp' %}" type="image/webp">
+                    <img src="{% static 'img/perfumes/bleu-de-chanel.png' %}" alt="Blue de Chanel" class="img">
+                </picture>
+                <div class="column">
+                    <h1 class="name">Bleu de Chanel</h1>
+
+                    <div class="price-volume">
+                        <p>90 EUR</p>
+                        <p>50 ml</p>
+                    </div>
+
+                    <p class="description">Ода чоловічій свободі, виражена в ароматично-деревному парфумі з чарівним
+                        шлейфом. Це вічний аромат, що має сильний чоловічий характер. BLEU DE CHANEL Parfum - це зріла
+                        композиція з чистим, глибоким характером. Інтенсивний чоловічий аромат, який випромінює
+                        впевненість у собі. Аромат зберігається в глибокій і таємничій синій пляшці.</p>
+
+                    <button class="button">Придбати</button>
+                </div>
+            </article>
+        </div>
+
+{% endblock %}

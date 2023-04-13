@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <section class="intro shop-cart">
+        <h1>Кошик</h1>
+    </section>
+
+    <section id="cart-body">
+        <div id="cart-items">
+            <article class="item">
+                <picture>
+                    <source srcset="{% static 'img/perfumes/bleu-de-chanel.avif' %}" type="image/avif">
+                    <source srcset="{% static 'img/perfumes/bleu-de-chanel.webp' %}" type="image/webp">
+                    <img src="{% static 'img/perfumes/bleu-de-chanel.png' %}" alt="Blue de Chanel" class="img">
+                </picture>
+                <div class="column">
+                    <h2 class="name">Bleu de Chanel</h2>
+
+                    <div class="price-volume">
+                        <p>50 ml</p>
+                        <p>180 EUR</p>
+                    </div>
+
+                    <div class="bottom">
+                        <button class="button delete"><span class="fa-sr-only">Видалити</span></button>
+
+                        <div class="controls">
+                            <button class="button minus"><span class="fa-sr-only">Збільшити
+                                        кількість</span></button>
+                            <input type="text" value="2" readonly>
+                            <button class="button plus"><span class="fa-sr-only">Зменшити кількість</span></button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="item">
+                <img src="{% static 'img/perfumes/Guerlain-L’Homme-Idéal.png' %}" alt="Guerlain L’Homme Idéal" class="img">
+                <div class="column">
+                    <h2 class="name">Guerlain L’Homme Idéal</h2>
+
+                    <div class="price-volume">
+                        <p>75 ml</p>
+                        <p>92 EUR</p>
+                    </div>
+
+                    <div class="bottom">
+                        <button class="button delete"><span class="fa-sr-only">Видалити</span></button>
+
+                        <div class="controls">
+                            <button class="button minus"><span class="fa-sr-only">Збільшити
+                                        кількість</span></button>
+                            <input type="text" value="1" readonly>
+                            <button class="button plus"><span class="fa-sr-only">Зменшити кількість</span></button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <div id="order">
+            <h2 id="total">
+                Загальна вартість:
+            </h2>
+            <p>272 EUR</p>
+
+            <button class="button">Придбати</button>
+        </div>
+    </section>
+
+{% endblock %}

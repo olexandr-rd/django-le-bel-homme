@@ -1,0 +1,97 @@
+{
+    "pizza-of-the-day": {
+        "0": {
+            "name": "Pepperoni",
+            "price": 109,
+            "ingredients": [
+                "pizza dough",
+                "cheese",
+                "tomatoes",
+                "pepperoni"
+            ]
+        },
+        "1": {
+            "name": "Four-cheese",
+            "price": 149,
+            "ingredients": [
+                "pizza dough",
+                "cheese",
+                "mozzarella",
+                "grana padano",
+                "blue cheese"
+            ]
+        },
+        "2": {
+            "name": "Carbonara",
+            "price": 125,
+            "ingredients": [
+                "pizza dough",
+                "eggs",
+                "bacon",
+                "mushrooms",
+                "garlic"
+            ]
+        },
+        "3": {
+            "name": "Four-meat",
+            "price": 119,
+            "ingredients": [
+                "pizza dough",
+                "cheese",
+                "tomatoes",
+                "garlic",
+                "chicken",
+                "ham",
+                "salami",
+                "beam",
+                "cucumbers"
+            ]
+        },
+        "4": {
+            "name": "Americana",
+            "price": 99,
+            "ingredients": [
+                "pizza dough",
+                "cheese",
+                "tomatoes",
+                "onion",
+                "chicken",
+                "salami",
+                "corn",
+                "bbq souse"
+            ]
+        },
+        "5": {
+            "name": "Spicy",
+            "price": 105,
+            "ingredients": [
+                "pizza dough",
+                "cheese",
+                "tomatoes",
+                "ham",
+                "sausages",
+                "spicy paper almito"
+            ]
+        },
+        "6": {
+            "name": "Hawaii",
+            "price": 104,
+            "ingredients": [
+                "pizza dough",
+                "cheese",
+                "tomatoes",
+                "chicken",
+                "pineapple"
+            ]
+        }
+    },
+    "ingredients": {
+        "chicken": 18,
+        "pineapple": 10,
+        "olive": 8,
+        "cheese": 7,
+        "pepperoni": 15,
+        "tomatoes": 5,
+        "mozzarella": 11
+    }
+}
