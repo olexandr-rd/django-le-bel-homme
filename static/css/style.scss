@@ -3,7 +3,7 @@
 @use 'shop';
 @use 'info';
 @use 'cart';
-@use 'login';
+@use 'forms';
 @use 'item';
 
 $main-height: var.$main-height;
@@ -184,7 +184,7 @@ section {
     padding: var.$main-height var.$side-padding;
 
     &:first-of-type {
-        height: max(700px, 100vh);
+        height: max(700px, 100svh);
         display: flex;
         justify-content: center;
 

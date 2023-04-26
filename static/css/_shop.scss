@@ -1,5 +1,7 @@
 @use 'variables' as var;
 
+$gap: var.$gap;
+
 .shop {
     background: url("../img/backgrounds/shop-bg.png") no-repeat center;
     background-size: cover;
@@ -8,7 +10,7 @@
 #main-shop {
     display: flex;
     flex-direction: column;
-    gap: var.$gap;
+    gap: $gap;
     align-items: center;
 }
 
@@ -16,26 +18,26 @@
 
     width: 100%;
     display: flex;
-    gap: clamp(calc(var.$gap / 5), 5vw, var.$gap);
+    gap: clamp($gap / 5, 5vw, $gap);
     justify-content: space-between;
 
     .button {
         display: flex;
         justify-content: center;
-        align-items: center;
         gap: 20px;
         background: var.$white;
         color: var.$black;
+
         span {
             font-family: var.$font-family;
-            display: none;   
+            display: none;
         }
     }
 
     .brands {
-        width: calc(100% - 2 * 55px - var.$gap / 5 * 2);
+        width: calc(100% - 2 * 55px - $gap / 5 * 2);
         @media screen and (min-width: 768px) {
-            width: calc(100% - 2 * 200px - var.$gap / 5 * 2);
+            width: calc(100% - 2 * 200px - $gap / 5 * 2);
         }
     }
 
@@ -46,7 +48,7 @@
             width: 200px;
             span {
                 display: inline-block;
-            } 
+            }
         }
     }
 
@@ -82,7 +84,6 @@
 
         &::placeholder {
             color: var.$black;
-        
         }
     }
 } 

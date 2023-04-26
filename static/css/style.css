@@ -38,7 +38,7 @@ h2 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 50px;
+  gap: 3.125rem;
   align-items: center;
 }
 @media screen and (min-width: 1024px) {
@@ -55,7 +55,7 @@ h2 {
   .landing #intro-right {
     max-width: 35%;
     align-items: end;
-    gap: auto;
+    gap: inherit;
   }
   .landing #intro-right h2 {
     text-align: end;
@@ -70,7 +70,7 @@ h2 {
 .bestsellers {
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 3.125rem;
   align-items: center;
 }
 
@@ -79,7 +79,7 @@ h2 {
   max-width: 100%;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  gap: 50px;
+  gap: 3.125rem;
   grid-auto-flow: row;
   justify-items: center;
 }
@@ -102,17 +102,13 @@ h2 {
 }
 .perfumes .cart {
   margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
+  font: normal 1.125rem/1.125rem "Fontawesome";
   width: 40px;
   height: 40px;
   border-radius: 7px;
   box-shadow: none;
 }
 .perfumes .cart::after {
-  font-family: "Fontawesome";
   content: "\f07a";
 }
 
@@ -149,7 +145,7 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 25px;
+  gap: 1.5625rem;
   width: 100%;
 }
 
@@ -162,7 +158,7 @@ h2 {
 }
 
 .why-we h2 {
-  margin-bottom: 50px;
+  margin-bottom: 3.125rem;
 }
 .why-we img {
   width: clamp(100px, 50%, 120px);
@@ -174,7 +170,7 @@ h2 {
 .reasons-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 3.125rem;
 }
 .reasons-wrapper div {
   align-self: center;
@@ -185,7 +181,7 @@ h2 {
 .conclusion {
   display: flex;
   justify-content: center;
-  gap: 50px;
+  gap: 3.125rem;
 }
 @media screen and (min-width: 1024px) {
   .about-us,
@@ -201,12 +197,18 @@ h2 {
   margin: 0;
 }
 .conclusion .left-column #waiting-wrapper {
-  margin: 50px 0;
+  margin: 3.125rem 0;
 }
 .conclusion .left-column .site-logo {
   display: inline-block;
   height: 50px;
   color: #000000;
+}
+.conclusion .button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
 }
 
 .right-img {
@@ -263,20 +265,19 @@ h2 {
 #main-shop {
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 3.125rem;
   align-items: center;
 }
 
 #main-shop #sorting {
   width: 100%;
   display: flex;
-  gap: clamp(10px, 5vw, 50px);
+  gap: clamp(0.625rem, 5vw, 3.125rem);
   justify-content: space-between;
 }
 #main-shop #sorting .button {
   display: flex;
   justify-content: center;
-  align-items: center;
   gap: 20px;
   background: #ffffff;
   color: #000000;
@@ -286,11 +287,11 @@ h2 {
   display: none;
 }
 #main-shop #sorting .brands {
-  width: calc(100% - 110px - 20px);
+  width: calc(100% - 110px - 1.25rem);
 }
 @media screen and (min-width: 768px) {
   #main-shop #sorting .brands {
-    width: calc(100% - 400px - 20px);
+    width: calc(100% - 400px - 1.25rem);
   }
 }
 #main-shop #sorting .sort, #main-shop #sorting .search {
@@ -346,7 +347,7 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 50px;
+  gap: 3.125rem;
   font-size: 100%;
 }
 #info-cards article {
@@ -378,7 +379,7 @@ h2 {
   #info-cards {
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 80px calc(clamp(30px, 5vw, 80px) * 2);
+    gap: 5rem calc(clamp(1.875rem, 5vw, 5rem) * 2);
     justify-content: center;
     align-items: flex-start;
   }
@@ -409,7 +410,7 @@ h2 {
 #cart-body {
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 3.125rem;
 }
 @media screen and (min-width: 1024px) {
   #cart-body {
@@ -422,13 +423,13 @@ h2 {
 #cart-items {
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 3.125rem;
   align-items: center;
   font-size: 90%;
 }
 @media screen and (min-width: 1024px) {
   #cart-items {
-    gap: 75px;
+    gap: 4.6875rem;
   }
 }
 
@@ -441,7 +442,7 @@ h2 {
   gap: 30px;
 }
 #cart-items .item .img {
-  max-width: 250px;
+  width: 250px;
 }
 @media screen and (min-width: 540px) {
   #cart-items .item {
@@ -501,7 +502,7 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 25px;
+  gap: 1.5625rem;
 }
 #order p {
   font-size: 200%;
@@ -510,12 +511,12 @@ h2 {
 }
 #order .button {
   min-width: fit-content;
-  padding: 0 50px;
+  padding: 0 3.125rem;
 }
 @media screen and (min-width: 1024px) {
   #order {
     position: sticky;
-    top: 160px;
+    top: 10rem;
     align-self: flex-start;
     z-index: 1;
   }
@@ -533,28 +534,44 @@ h2 {
   content: "\f068";
 }
 
-#login-form {
-  margin: 50px auto 0;
+.form {
+  margin: 3.125rem auto 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 50px;
-  max-width: 500px;
-}
-#login-form input {
-  border: none;
+  gap: 3.125rem;
+  max-width: 600px;
+  padding: 3.125rem;
   border-radius: 14px;
-  height: 50px;
+  background: #ffffff;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.15);
+}
+.form p, .form button {
   width: 100%;
   margin: 0;
 }
-#login-form label {
-  align-self: flex-start;
-  margin-bottom: -45px;
+.form p {
+  text-align: left;
+}
+.form input {
+  border: 2px solid;
+  padding: 10px;
+  border-radius: 14px;
+  height: 50px;
+  width: 100%;
+  font-size: 100%;
+  box-shadow: 5px 5px 50px rgba(0, 0, 0, 0.15);
+}
+
+.form-title {
+  font-size: 250%;
+}
+
+.form-link {
+  color: #000000;
 }
 
 .item-wrapper {
-  padding: 160px clamp(30px, 5vw, 80px) 80px;
+  padding: 10rem clamp(1.875rem, 5vw, 5rem) 5rem;
   background-color: #f8ede3;
   min-height: 100%;
 }
@@ -584,7 +601,7 @@ h2 {
   }
   .item-wrapper .item .price-volume {
     justify-content: left;
-    gap: 50px;
+    gap: 3.125rem;
   }
 }
 .item-wrapper .item .column {
@@ -671,10 +688,10 @@ footer a {
 
 header {
   z-index: 1;
-  padding: 0 clamp(30px, 5vw, 80px);
+  padding: 0 clamp(1.875rem, 5vw, 5rem);
   position: fixed;
   top: 0;
-  height: 80px;
+  height: 5rem;
   justify-content: space-between;
   align-items: center;
 }
@@ -749,9 +766,9 @@ header p {
 #menu.show-menu {
   background: #000000;
   width: 100vw;
-  height: calc(100vh - 80px);
+  height: calc(100vh - 5rem);
   color: #ffffff;
-  top: 80px;
+  top: 5rem;
   left: 0;
   position: absolute;
   display: flex;
@@ -780,10 +797,10 @@ main {
 }
 
 section {
-  padding: 80px clamp(30px, 5vw, 80px);
+  padding: 5rem clamp(1.875rem, 5vw, 5rem);
 }
 section:first-of-type {
-  height: max(700px, 100vh);
+  height: max(700px, 100svh);
   display: flex;
   justify-content: center;
 }
@@ -824,8 +841,8 @@ footer {
   justify-content: space-between;
   flex-direction: column;
   text-align: left;
-  gap: 50px;
-  padding: 50px clamp(30px, 5vw, 80px);
+  gap: 3.125rem;
+  padding: 3.125rem clamp(1.875rem, 5vw, 5rem);
   flex-shrink: 0;
   margin: 0;
 }

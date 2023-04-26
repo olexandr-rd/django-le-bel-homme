@@ -65,7 +65,7 @@ h2 {
         #intro-right {
             max-width: 35%;
             align-items: end;
-            gap: auto;
+            gap: inherit;
 
             h2 {
                 text-align: end;
@@ -116,17 +116,13 @@ $gap: clamp(30px, 5vw, 50px);
     
     .cart {
         margin: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 18px;
+        font: normal 1.125rem/1.125rem 'Fontawesome';
         width: 40px;
         height: 40px;
         border-radius: 7px;
         box-shadow: none;
 
         &::after {
-            font-family: 'Fontawesome';
             content: '\f07a';
         }
     }
@@ -163,11 +159,13 @@ $gap: clamp(30px, 5vw, 50px);
         }
     }
 
+    $gap: var.$gap;
+
     .bottom {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: calc(var.$gap / 2);
+        gap: calc($gap / 2);
         width: 100%;
     }
 }
@@ -217,21 +215,30 @@ $gap: clamp(30px, 5vw, 50px);
     }
 }
 
-.conclusion .left-column {
-    font-size: 150%;
+.conclusion {
+    .left-column {
+        font-size: 150%;
 
-    p {
-        margin: 0;
+        p {
+            margin: 0;
+        }
+
+        #waiting-wrapper {
+            margin: var.$gap 0;
+        }
+
+        .site-logo {
+            display: inline-block;
+            height: 50px;
+            color: var.$black;
+        }
     }
 
-    #waiting-wrapper {
-        margin: var.$gap 0;
-    }
-
-    .site-logo {
-        display: inline-block;
-        height: 50px;
-        color: var.$black;
+    .button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
     }
 }
 

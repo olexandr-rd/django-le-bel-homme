@@ -1,10 +1,9 @@
 {% extends 'base.html' %}
-{% load static %}
 
 {% block content %}
 
     <div class="item-wrapper">
-        <h1 class="form-title">Вхід</h1>
+        <h1 class="form-title">Реєстрація</h1>
         <form class="form" method="POST" action="">
             {% csrf_token %}
 
@@ -16,9 +15,10 @@
                 {% endfor %}
 
             {% endfor %}
-            <button type="submit" class="button">Увійти</button>
+
+            <button type="submit" class="button">Реєстрація</button>
         </form>
-        <p>Уперше завітав до нас? <a class="form-link" href="{% url 'register' %}">Реєстрація</a></p>
+        <p>Уже був у нас? <a class="form-link" href="{% url 'login' %}" >Вхід</a></p>
     </div>
 
 {% endblock %}

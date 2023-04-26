@@ -1,9 +1,9 @@
-$gap: 50px;
+$gap: 3.125rem;
 $black: #000000;
 $white: #ffffff;
 $bisque: #f8ede3;
 $font-family: 'Montserrat', sans-serif;
 $border-radius: 14px;
 $img-shadow: 0 0 50px 10px rgba($black, 0.3);
-$main-height: 80px;
-$side-padding: clamp(30px, 5vw, $main-height);
+$main-height: 5rem;
+$side-padding: clamp(1.875rem, 5vw, $main-height);
