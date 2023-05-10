@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from .models import Brand
 
 
 class CustomAuthenticationForm(AuthenticationForm):
@@ -55,3 +56,8 @@ class UserRegistrationForm(UserCreationForm):
         # Always return a value to use as the new cleaned data, even if
         # this method didn't change it.
         return data
+
+
+class BrandForm(forms.Form):
+    brand_choices = forms.ModelMultipleChoiceField(queryset=Brand.objects.all(),
+                                                   widget=forms.CheckboxSelectMultiple)

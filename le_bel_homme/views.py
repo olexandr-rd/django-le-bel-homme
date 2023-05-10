@@ -1,11 +1,13 @@
 from django.contrib.auth import authenticate, login
-from django.shortcuts import render, redirect
-from .forms import UserRegistrationForm, CustomAuthenticationForm
-from .models import Perfume
+from django.shortcuts import render, redirect, get_object_or_404
+from .forms import UserRegistrationForm, CustomAuthenticationForm, BrandForm
+from .models import Perfume, Brand
 
 # Create your views here.
 def index(request):
-    return render(request, 'index.html')
+    perfumes = Perfume.objects.all()[:4]
+    context = {'perfumes': perfumes}
+    return render(request, 'index.html', context)
 
 
 def login_view(request):
@@ -42,7 +44,15 @@ def register(request):
 
 
 def shop(request):
-    return render(request, 'shop.html')
+    brands = Brand.objects.all()
+    form = BrandForm()
+    perfumes = Perfume.objects.all()
+    context = {
+        'perfumes': perfumes,
+        'form': form,
+        'brands': brands
+    }
+    return render(request, 'shop.html', context)
 
 
 def info(request):
@@ -50,7 +60,13 @@ def info(request):
 
 
 def cart(request):
-    return render(request, 'cart.html')
+    chanel = Perfume.objects.get(name='Bleu de Chanel')
+    guerlain = Perfume.objects.get(name='Guerlain L’Homme Idéal')
+    perfumes = chanel, guerlain
+    context = {
+        'perfumes': perfumes
+    }
+    return render(request, 'cart.html', context)
 
 
 def logout(request):
@@ -59,6 +75,9 @@ def logout(request):
     response.delete_cookie('username')
     return response
 
-def item(request):
-    perfume = Perfume.objects.get(name='Bleu de Chanel')
-    return render(request, 'item.html', {'perfume': perfume})
+def perfume_detail(request, slug):
+    perfume = get_object_or_404(Perfume, url_name=slug)
+    context = {
+        'perfume': perfume
+    }
+    return render(request, 'perfume_detail.html', context)
