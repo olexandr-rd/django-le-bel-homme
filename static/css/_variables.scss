@@ -1,9 +1,24 @@
 $gap: 3.125rem;
-$black: #000000;
-$white: #ffffff;
-$bisque: #f8ede3;
-$font-family: 'Montserrat', sans-serif;
-$border-radius: 14px;
-$img-shadow: 0 0 50px 10px rgba($black, 0.3);
 $main-height: 5rem;
 $side-padding: clamp(1.875rem, 5vw, $main-height);
+
+$black: #000000;
+$white: #FFFFFF;
+$bisque: #F8EDE3;
+$blue: #32325D;
+
+$font-family: 'Montserrat', sans-serif;
+
+$border-radius: 14px;
+$box-shadow: rgba(0, 0, 0, 0.56) 0 22px 70px 4px;
+
+@mixin button-colors ($text, $background, $shadow) {
+    color: $text;
+    background: $background;
+    box-shadow: rgba($shadow, 0.25) 0 30px 60px -12px, rgba($background, 0.3) 0 18px 36px -18px;
+    transition: box-shadow ease-in-out .7s;
+
+    &:hover, &:focus {
+        box-shadow: rgba($shadow, 0.55) 0 35px 60px -12px, rgba($background, 0.6) 0 23px 36px -18px;
+    }
+}

@@ -1,15 +1,15 @@
-@use 'variables' as var;
+@use 'variables' as *;
 
 .form {
-    margin: var.$gap auto 0;
+    margin: $gap auto 0;
     display: flex;
     flex-direction: column;
-    gap: var.$gap;
+    gap: $gap;
     max-width: 600px;
-    padding: var.$gap;
-    border-radius: var.$border-radius;
-    background: var.$white;
-    box-shadow: 0 0 50px rgba(var.$black, 0.15);
+    padding: $gap;
+    border-radius: $border-radius;
+    background: $white;
+    box-shadow: 0 0 50px rgba($black, 0.15);
 
     p, button {
         width: 100%;
@@ -27,7 +27,7 @@
         height: 50px;
         width: 100%;
         font-size: 100%;
-        box-shadow: 5px 5px 50px rgba(var.$black, 0.15);
+        box-shadow: 5px 5px 50px rgba($black, 0.15);
     }
 }
 
@@ -36,5 +36,14 @@
 }
 
 .form-link {
-    color: var.$black;
+    color: $black;
+}
+
+.errorlist {
+    margin: 0;
+    padding: 0;
+}
+
+.errorlist li {
+    list-style: none;
 }

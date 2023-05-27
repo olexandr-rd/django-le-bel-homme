@@ -2,7 +2,7 @@ function showMenu() {
     let menu = document.getElementById('menu');
     let navSpans = Array.from(document.getElementById('menu-button').children);
 
-    menu.classList.toggle('show-menu');
+    menu.classList.toggle('open');
     navSpans.forEach(element => element.classList.toggle('open'));
 }
 
@@ -14,12 +14,20 @@ function subscribe(event) {
 
 function showSorting(blockId) {
     let block = document.getElementById(blockId);
-    if (block.style.display === "block") {
-        block.style.display = "none"
+    let form = document.getElementById('sorting-form');
+
+    if (block.classList.contains('open')) {
+        block.classList.remove('open');
+        form.classList.remove('open');
     }
     else {
-        let blocks = Array.from(document.getElementById("sorting-blocks").children);
-        blocks.forEach(element => element.style.display = "none");
-        document.getElementById(blockId).style.display = "block";
+        let blocks = Array.from(document.getElementsByClassName('sort-category'));
+        blocks.forEach(element => element.classList.remove('open'));
+        block.classList.add('open');
+        form.classList.add('open')
     }
+}
+
+function orderPopup() {
+     document.getElementById('order-popup').classList.add('open');
 }

@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 class Brand(models.Model):
@@ -24,3 +25,11 @@ class Perfume(models.Model):
 
     def __str__(self):
         return self.name
+
+
+
+class Cart(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    perfume = models.ForeignKey(Perfume, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
+    created_at = models.DateTimeField(auto_now_add=True)

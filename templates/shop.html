@@ -15,46 +15,57 @@
         <button class="search button" onclick="showSorting('search-form')"><span>Пошук</span></button>
     </div>
 
-    <div id="sorting-blocks">
-        <form action="" id="sort-form">
-            <input type="radio" id="rating" name="sort-way" value="rating" checked>
-            <label for="rating">За рейтингом</label><br>
+    <form id="sorting-form" action="" method="GET">
+        {% csrf_token %}
 
-            <input type="radio" id="ascending" name="sort-way" value="ascending">
-            <label for="ascending">За зростанням ціни</label><br>
+        <div id="sort-form" class="sort-category">
+            {{ sorting }}
+        </div>
 
-            <input type="radio" id="descending" name="sort-way" value="descending">
-            <label for="descending">За спаданням ціни</label>
-        </form>
+        <div id="brands-form" class="sort-category">
+            {{ brand_form }}
+        </div>
 
-        <form id="brands-form">
-            {% for brand in brands %}
-            <input  type="checkbox" name="{{ brand.name }}" value="{{ brand.id }}" id="{{ brand.id }}">
-            <label for="{{ brand.id }}">{{ brand.name }}</label>
-            {% endfor %}
-        </form>
+        <div id="search-form" class="sort-category">
+            <input type="text" name="query" placeholder="Назва парфуму..." value="{{ query|default_if_none:'' }}">
+        </div>
 
-        <form id="search-form">
-            <input type="text" placeholder="Назва парфуму..." required>
-        </form>
-    </div>
+        <div id="buttons">
+            <button type="submit" class="button" id="sort-button">Пошук</button>
+            {% if query or brand_form.is_bound and brand_form.data %}
+            <a href="{% url 'shop' %}?clear" class="button">Очистити</a>
+            {% endif %}
+        </div>
+
+    </form>
+
 
     <div class="perfumes">
-            {% for perfume in perfumes %}
-            <article class="item">
-                <img src="{% static perfume.image.url %}" alt="Пляшечка парфуму {{ perfume.name }}" class="img">
-                <a href="{% url 'perfume_detail' perfume.url_name %}"><h3 class="name">{{ perfume.name }}</h3></a>
-                <div class="bottom">
-                    <div class="price-volume">
-                        <p>{{ perfume.price }} EUR</p>
-                        <p>|</p>
-                        <p>{{ perfume.volume }} ml</p>
-                    </div>
-                    <button class="button cart"><span class="fa-sr-only">Придбати</span></button>
-                </div>
-            </article>
-            {% endfor %}
-        </div>
+        {% if perfumes %}
+        {% for perfume in perfumes %}
+        <article class="item">
+            <img src="{% static perfume.image.url %}" alt="Пляшечка парфуму {{ perfume.name }}" class="img">
+            <a href="{% url 'perfume_detail' perfume.url_name %}"><h3 class="name">{{ perfume.name }}</h3></a>
+
+            <div class="bottom">
+                <p class="price-volume">€{{ perfume.price }} | {{ perfume.volume }} ml</p>
+
+                <form action="{% url 'add_to_cart' perfume.id %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="button cart">
+                        <span class="fa-sr-only">Придбати</span>
+                    </button>
+                </form>
+
+            </div>
+        </article>
+        {% empty %}
+        <h2>Немає доступних парфумів</h2>
+        {% endfor %}
+        {% else %}
+        <h2>Не знайдено парфумів</h2>
+        {% endif %}
+    </div>
 
 </section>
 

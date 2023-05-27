@@ -1,6 +1,4 @@
-@use 'variables' as var;
-
-$gap: var.$gap;
+@use 'variables' as *;
 
 .shop {
     background: url("../img/backgrounds/shop-bg.png") no-repeat center;
@@ -12,10 +10,13 @@ $gap: var.$gap;
     flex-direction: column;
     gap: $gap;
     align-items: center;
+
+    .perfumes {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
 }
 
 #main-shop #sorting {
-
     width: 100%;
     display: flex;
     gap: clamp($gap / 5, 5vw, $gap);
@@ -25,11 +26,11 @@ $gap: var.$gap;
         display: flex;
         justify-content: center;
         gap: 20px;
-        background: var.$white;
-        color: var.$black;
+        background: $white;
+        color: $black;
 
         span {
-            font-family: var.$font-family;
+            font-family: $font-family;
             display: none;
         }
     }
@@ -61,29 +62,55 @@ $gap: var.$gap;
     }
 }
 
-#sorting-blocks {
+#sorting-form {
     width: 100%;
-}
-
-#sorting-blocks form {
     display: none;
-    border-radius: var.$border-radius;
-    width: 100%;
-    padding: 20px;
-    background-color: var.$white;
-    box-shadow: 0 0 50px rgba(var.$black, 0.3);
+    border-radius: $border-radius;
+    padding: $gap;
+    background-color: $white;
+    box-shadow: $box-shadow;
 
-    input[type="text"] {
+    &.open {
+        display: flex;
+        gap: $gap;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .sort-category {
+        display: none;
         width: 100%;
-        border: none;
-        border-radius: 10px;
-        font-size: 120%;
-        padding: 5px;
-        height: 50px;
-        font-family: var.$font-family;
+        font-size: 110%;
 
-        &::placeholder {
-            color: var.$black;
+        &.open {
+            display: block;
         }
     }
-} 
+
+    input[type="text"] {
+        border: $black solid 2px;
+        border-radius: $border-radius;
+        font-family: $font-family;
+        font-size: 100%;
+        padding: 10px;
+        height: 50px;
+        width: 100%;
+    }
+}
+
+#id_brand_choices {
+    display: grid;
+    justify-items: start;
+    grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+}
+
+#id_sorting_option, #buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: $gap;
+}
+
+#id_sorting_option, #id_brand_choices {
+    gap: 0 $gap;
+}

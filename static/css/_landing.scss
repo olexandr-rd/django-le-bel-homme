@@ -1,11 +1,10 @@
-@use 'variables' as var;
+@use 'variables' as *;
 
-h1 {
+h1, h2 {
     margin: 0;
 }
 
 h2 {
-    margin: 0;
     font-size: 200%;
 }
 
@@ -21,18 +20,11 @@ h2 {
     background: url("../img/backgrounds/landing-bg.jpeg") no-repeat 80%;
     background-size: cover;
 
-    color: var.$white;
+    color: $white;
     text-align: center;
     justify-content: center;
     flex-direction: column;
     gap: $gap;
-
-    .button {
-        color: var.$black;
-        background-color: var.$bisque;
-        box-shadow: 5px 5px 50px rgba(var.$bisque, 0.3);
-    }
-
 
     h1 {
         font-size: clamp(170%, 5vw, 250%);
@@ -47,7 +39,7 @@ h2 {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        gap: var.$gap;
+        gap: $gap;
         align-items: center;
     }
 
@@ -69,10 +61,13 @@ h2 {
 
             h2 {
                 text-align: end;
-                margin: 0;
             }
         }
     }
+}
+
+.landing .button, footer button {
+    @include button-colors($black, $bisque, $bisque);
 }
 
 .about-us p {
@@ -84,43 +79,36 @@ $gap: clamp(30px, 5vw, 50px);
 .bestsellers {
     display: flex;
     flex-direction: column;
-    gap: var.$gap;
+    gap: $gap;
     align-items: center;
+
+    .perfumes {
+        grid-template-columns: repeat(1, 1fr);
+
+        @media screen and (min-width: 768px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media screen and (min-width: 1024px) {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
 }
 
 .perfumes {
     width: 100%;
     max-width: 100%;
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: var.$gap;
+    gap: $gap;
     grid-auto-flow: row;
     justify-items: center;
 
-    .price-volume {
-        gap: 10px;
-    }
-
-    @media screen and (min-width: 768px) {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    @media screen and (min-width: 1024px) {
-        grid-template-columns: repeat(4, 1fr);
-        gap: $gap;
-
-        .price-volume {
-            font-size: 80%;
-        }
-    }
-    
     .cart {
-        margin: 0;
         font: normal 1.125rem/1.125rem 'Fontawesome';
         width: 40px;
         height: 40px;
         border-radius: 7px;
-        box-shadow: none;
+        box-shadow: $box-shadow;
 
         &::after {
             content: '\f07a';
@@ -133,33 +121,31 @@ $gap: clamp(30px, 5vw, 50px);
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    position: relative;
     gap: 20px;
 
-    &>*,
-    h3,
-    p {
+    & > *, h3, p {
         margin: 0;
     }
 
     .img {
-        max-width: 320px;
-        filter: drop-shadow(15px 15px 10px rgba(var.$black, 0.5));
         width: 100%;
+        max-width: 320px;
+        filter: drop-shadow(20px 20px 10px rgba($black, 0.5));
+        transform: translateZ(0);
     }
 
     a {
-        color: var.$black;
+        color: $black;
         text-decoration: none;
     }
 
     .name {
         font-weight: bold;
         @media screen and (max-width: 1023px) {
-            font-size: 125%;   
+            font-size: 125%;
         }
     }
-
-    $gap: var.$gap;
 
     .bottom {
         display: flex;
@@ -181,7 +167,7 @@ $gap: clamp(30px, 5vw, 50px);
 
 .why-we {
     h2 {
-        margin-bottom: var.$gap;
+        margin-bottom: $gap;
     }
 
     img {
@@ -196,7 +182,7 @@ $gap: clamp(30px, 5vw, 50px);
 .reasons-wrapper {
     display: flex;
     flex-direction: column;
-    gap: var.$gap;
+    gap: $gap;
 
     div {
         align-self: center;
@@ -204,11 +190,10 @@ $gap: clamp(30px, 5vw, 50px);
     }
 }
 
-.about-us,
-.conclusion {
+.about-us, .conclusion {
     display: flex;
     justify-content: center;
-    gap: var.$gap;
+    gap: $gap;
 
     @media screen and (min-width: 1024px) {
         justify-content: space-between;
@@ -224,13 +209,13 @@ $gap: clamp(30px, 5vw, 50px);
         }
 
         #waiting-wrapper {
-            margin: var.$gap 0;
+            margin: $gap 0;
         }
 
         .site-logo {
             display: inline-block;
             height: 50px;
-            color: var.$black;
+            color: $black;
         }
     }
 
@@ -247,22 +232,10 @@ $gap: clamp(30px, 5vw, 50px);
     width: clamp(350px, 33%, 587px);
     max-height: 880px;
     border-radius: 14px;
-    box-shadow: var.$img-shadow;
+    box-shadow: $box-shadow;
 
     @media screen and (min-width: 1024px) {
         display: block;
-    }
-}
-
-@media screen and (min-width: 768px) {
-    .intro {
-        h1 {
-            font-size: 270%;
-        }
-
-        h2 {
-            font-size: 150%;
-        }
     }
 }
 

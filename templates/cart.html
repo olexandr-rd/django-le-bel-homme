@@ -3,67 +3,73 @@
 
 {% block content %}
 
-    <section class="intro shop-cart">
-        <h1>Кошик</h1>
-    </section>
+<section class="intro shop-cart">
+    <h1>Кошик</h1>
+</section>
 
-    <section id="cart-body">
-        <div id="cart-items">
-            <article class="item">
-                <img src="{% static 'img/perfumes/bleu-de-chanel.png' %}" alt="Blue de Chanel" class="img">
-                <div class="column">
-                    <h2 class="name">Bleu de Chanel</h2>
+<section id="cart-body">
+    {% if cart_items %}
+    <div id="cart-items">
+        {% for cart_item in cart_items %}
+        <article class="item">
+            <img src="{% static cart_item.perfume.image.url %}"
+                 alt="Пляшечка парфуму {{ cart_item.perfume.name }}" class="img">
 
-                    <div class="price-volume">
-                        <p>50 ml</p>
-                        <p>180 EUR</p>
-                    </div>
+            <div class="column">
+                <a href="{% url 'perfume_detail' cart_item.perfume.url_name %}">
+                    <h2 class="name">{{ cart_item.perfume.name }}</h2>
+                </a>
 
-                    <div class="bottom">
-                        <button class="button delete"><span class="fa-sr-only">Видалити</span></button>
+                <div class="price-volume">
+                    <p>€{{ cart_item.perfume.price }}</p>
+                    <p>{{ cart_item.perfume.volume }} ml</p>
+                </div>
 
-                        <div class="controls">
-                            <button class="button minus"><span class="fa-sr-only">Збільшити
-                                        кількість</span></button>
-                            <input type="text" value="2" readonly>
-                            <button class="button plus"><span class="fa-sr-only">Зменшити кількість</span></button>
-                        </div>
+                <div class="bottom">
+                    <form action="{% url 'remove_from_cart' cart_item.id %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="button delete"><span class="fa-sr-only">Видалити</span></button>
+                    </form>
+
+                    <div class="controls">
+                        <form action="{% url 'remove_one_from_cart' cart_item.id %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="button minus">
+                                <span class="fa-sr-only">Зменшити кількість</span>
+                            </button>
+                        </form>
+                        <span class="quantity">{{ cart_item.quantity }}</span>
+                        <form action="{% url 'add_to_cart' cart_item.perfume.id %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="button plus">
+                                <span class="fa-sr-only">Збільшити кількість</span>
+                            </button>
+                        </form>
                     </div>
                 </div>
-            </article>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+    <div id="order">
+        <h2 id="total">
+            Загальна вартість:
+        </h2>
+        <p>€{{ total_price }}</p>
+        <button class="button" id="order-button" onclick="orderPopup()">Придбати</button>
+    </div>
 
-            <article class="item">
-                <img src="{% static 'img/perfumes/guerlain-l-homme-ideal.png' %}" alt="Guerlain L’Homme Idéal" class="img">
-                <div class="column">
-                    <h2 class="name">Guerlain L’Homme Idéal</h2>
+    <div id="order-popup">
+        <h2>Невдовзі зв'яжемося з тобою!</h2>
+        <form action="{% url 'clear_cart' %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="button">Продовжити</button>
+        </form>
+    </div>
 
-                    <div class="price-volume">
-                        <p>75 ml</p>
-                        <p>92 EUR</p>
-                    </div>
-
-                    <div class="bottom">
-                        <button class="button delete"><span class="fa-sr-only">Видалити</span></button>
-
-                        <div class="controls">
-                            <button class="button minus"><span class="fa-sr-only">Збільшити
-                                        кількість</span></button>
-                            <input type="text" value="1" readonly>
-                            <button class="button plus"><span class="fa-sr-only">Зменшити кількість</span></button>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        </div>
-
-        <div id="order">
-            <h2 id="total">
-                Загальна вартість:
-            </h2>
-            <p>272 EUR</p>
-
-            <button class="button">Придбати</button>
-        </div>
-    </section>
+    {% else %}
+    <h2 class="empty">Кошик порожній</h2>
+    {% endif %}
+</section>
 
 {% endblock %}

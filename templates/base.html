@@ -31,8 +31,7 @@
         <a href="{% url 'shop' %}">Аромати</a>
         <a href="{% url 'info' %}">Інфо</a>
         <a href="{% url 'cart' %}">Кошик</a>
-        {% if request.COOKIES.username %}
-            <p>Привіт, {{ request.COOKIES.username }}!</p>
+        {% if user.is_authenticated %}
             <a href="{% url 'logout' %}">Вийти</a>
         {% else %}
             <a href="{% url 'login' %}">Вхід</a>

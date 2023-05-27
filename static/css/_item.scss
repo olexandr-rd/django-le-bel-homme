@@ -1,10 +1,8 @@
-@use 'variables' as var;
-
-$main-height: var.$main-height;
+@use 'variables' as *;
 
 .item-wrapper {
-    padding: calc($main-height * 2) var.$side-padding var.$main-height;
-    background-color: var.$bisque;
+    padding: calc($main-height * 2) $side-padding $main-height;
+    background-color: $bisque;
     min-height: 100%;
 }
 
@@ -32,7 +30,11 @@ $main-height: var.$main-height;
 
         .price-volume {
             justify-content: left;
-            gap: var.$gap;  
+            gap: $gap;
+        }
+
+        .button {
+            width: 350px;
         }
     }
 
@@ -44,27 +46,22 @@ $main-height: var.$main-height;
         gap: $gap;
         align-self: stretch;
 
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 767px) {
             align-items: center;
         }
     }
 
     .name {
-        font-size: 225%;
+        font-size: 200%;
     }
 
     .price-volume {
         width: 100%;
-        font: 600 150% var.$font-family;    
+        font: 600 150% $font-family;
     }
 
     .description {
         text-align: left;
         width: 100%;
-    }
-
-    .button {
-        
-        width: clamp(250px, 100%, 350px);
     }
 }

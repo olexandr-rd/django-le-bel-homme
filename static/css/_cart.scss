@@ -1,4 +1,4 @@
-@use 'variables' as var;
+@use 'variables' as *;
 
 .shop-cart {
     background: url("../img/backgrounds/cart-bg.png") no-repeat center;
@@ -7,43 +7,52 @@
 
 #cart-body {
     display: flex;
+    min-height: 400px;
     flex-direction: column;
-    gap: var.$gap;
+    gap: $gap;
+    justify-content: center;
+    align-items: center;
 
     @media screen and (min-width: 1024px) {
         flex-direction: row;
         align-items: flex-start;
         justify-content: space-between;
     }
-}
-$gap: var.$gap;
-#cart-items {
 
+    .empty {
+        margin: auto;
+    }
+}
+
+#cart-items {
     display: flex;
     flex-direction: column;
-    gap: var.$gap;
+    gap: calc(2 * $gap) $gap;
     align-items: center;
     font-size: 90%;
     @media screen and (min-width: 1024px) {
         gap: calc($gap * 1.5);
     }
+    @media screen and (max-width: 599px) {
+        width: min(100%, 650px);
+    }
 }
 
 #cart-items .item {
     width: 100%;
-    $gap: 30px;
+    $item-gap: 30px;
+    gap: $item-gap;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: $gap;
 
     .img {
         width: 250px;
     }
 
-    @media screen and (min-width: 540px) {
-        width: clamp(450px, 100%, 900px);
+    @media screen and (min-width: 600px) {
         justify-content: flex-start;
         text-align: left;
         flex-direction: row;
@@ -63,7 +72,7 @@ $gap: var.$gap;
     }
 
     .price-volume {
-        font: 600 150% var.$font-family;
+        font: 600 150% $font-family;
     }
 
 }
@@ -71,20 +80,20 @@ $gap: var.$gap;
 #cart-items .item .bottom {
     display: flex;
     align-items: center;
-    $border-radius: var.$border-radius;
-    .button,
-    input {
+
+    .button, .quantity {
         height: 40px;
         border-radius: calc($border-radius / 2);
-        box-shadow: 0 0 70px rgba(var.$black, 0.3);
+        box-shadow: 0 0 70px rgba($black, 0.3);
     }
 
     .button {
         display: flex;
+        height: 40px;
+        width: 40px;
         align-items: center;
         justify-content: center;
         font-family: "Fontawesome";
-        width: 40px;
     }
 }
 
@@ -92,12 +101,15 @@ $gap: var.$gap;
     display: flex;
     gap: 10px;
 
-    input {
+    .quantity {
         width: 60px;
         border: none;
         outline: none;
-        font: bold 20px var.$font-family;
-        text-align: center;
+        font: bold 20px $font-family;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: $white;
     }
 }
 
@@ -107,6 +119,7 @@ $gap: var.$gap;
     flex-direction: column;
     align-items: center;
     gap: calc($gap / 2);
+    margin-top: calc($gap / 2);
 
     p {
         font-size: 200%;
@@ -116,14 +129,15 @@ $gap: var.$gap;
 
     .button {
         min-width: fit-content;
-        padding: 0 var.$gap;
+        padding: 0 $gap;
     }
-    $main-height: var.$main-height;
+
     @media screen and (min-width: 1024px) {
         position: sticky;
         top: calc($main-height * 2);
         align-self: flex-start;
         z-index: 1;
+        margin-top: 0;
     }
 }
 
@@ -137,4 +151,21 @@ $gap: var.$gap;
 
 .minus::after {
     content: "\f068";
+}
+
+#close-button {
+    content: "\f00d";
+}
+
+#order-popup {
+    top: calc(50% + $main-height / 2);
+    left: 50%;
+    gap: $gap;
+    border-radius: $border-radius;
+    background: $white;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s, visibility 0.3s;
+    box-shadow: $box-shadow;
+    width: 90vw;
+    height: calc(100vh - 2 * $side-padding - $main-height);
 }

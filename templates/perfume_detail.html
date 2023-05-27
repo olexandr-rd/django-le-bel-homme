@@ -10,16 +10,16 @@
                     <h1 class="name">{{ perfume.name }}</h1>
 
                     <div class="price-volume">
-                        <p>{{ perfume.price }} EUR</p>
+                        <p>€{{ perfume.price }}</p>
                         <p>{{ perfume.volume }} ml</p>
                     </div>
 
-                    <p class="description">Бренд: {{ perfume.brand }}
-                    <br><br> {{ perfume.description }} <br><br>
-                    Інгредієнти: {{ perfume.ingredients.all|join:", " }}
-                    </p>
+                    <p class="description">{{ perfume.description }}</p>
 
-                    <button class="button">Придбати</button>
+                    <form action="{% url 'add_to_cart' perfume.id %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="button">Придбати</button>
+                    </form>
                 </div>
             </article>
         </div>
