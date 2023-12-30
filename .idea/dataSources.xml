@@ -9,7 +9,7 @@
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
     <data-source source="LOCAL" name=".coverage" uuid="ec2fae3d-38a1-40b6-9fd9-68b8ccf0ca10">
-      <driver-ref>sqlite.xerial</driver-ref>
+      <driver-ref>5c0b52a0-fa04-420d-bd57-c144244e1c28</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:D:\Code\PycharmProjects\django-le-bel-homme\.coverage</jdbc-url>

@@ -6,7 +6,7 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from .models import Perfume, Brand, Cart
-from .forms import CustomAuthenticationForm, UserRegistrationForm
+from .forms import CustomAuthenticationForm, UserRegistrationForm, BrandForm, SortingForm
 
 
 class IndexViewTest(TestCase):
@@ -204,8 +204,6 @@ class CartViewTest(TestCase):
         # Check if the user is redirected to the login page
         self.assertRedirects(response, reverse('login') + '?next=' + reverse('cart'))
 
-
-
 class PerfumeDetailViewTest(TestCase):
     def setUp(self):
         self.image = SimpleUploadedFile("test_perfume.png", b"file_content", content_type="image/png")
@@ -223,3 +221,99 @@ class PerfumeDetailViewTest(TestCase):
         # Check if the correct perfume is present in the context
         self.assertIn('perfume', response.context)
         self.assertEqual(response.context['perfume'], self.perfume)
+
+# class CustomAuthenticationFormTest(TestCase):
+#     def test_valid_authentication_form(self):
+#         data = {'username': 'testuser', 'password': 'testpassword'}
+#         form = CustomAuthenticationForm(data=data)
+#         self.assertTrue(form.is_valid())
+#
+#     def test_invalid_authentication_form(self):
+#         data = {'username': 'testuser', 'password': ''}
+#         form = CustomAuthenticationForm(data=data)
+#         self.assertFalse(form.is_valid())
+#         self.assertIn('password', form.errors)
+#
+# class UserRegistrationFormTest(TestCase):
+#     def test_valid_registration_form(self):
+#         data = {
+#             'username': 'newuser',
+#             'first_name': 'New',
+#             'last_name': 'User',
+#             'email': 'newuser@example.com',
+#             'password1': 'newpassword',
+#             'password2': 'newpassword',
+#         }
+#         form = UserRegistrationForm(data=data)
+#         self.assertTrue(form.is_valid())
+#
+#     def test_invalid_registration_form(self):
+#         # Test for invalid data, such as mismatched passwords
+#         data = {
+#             'username': 'newuser',
+#             'first_name': 'New',
+#             'last_name': 'User',
+#             'email': 'newuser@example.com',
+#             'password1': 'newpassword',
+#             'password2': 'differentpassword',
+#         }
+#         form = UserRegistrationForm(data=data)
+#         self.assertFalse(form.is_valid())
+#         self.assertIn('password2', form.errors)
+#
+#     def test_duplicate_email(self):
+#         # Test for duplicate email address
+#         existing_user = User.objects.create(username='existinguser', email='existing@example.com')
+#         data = {
+#             'username': 'newuser',
+#             'first_name': 'New',
+#             'last_name': 'User',
+#             'email': 'existing@example.com',
+#             'password1': 'newpassword',
+#             'password2': 'newpassword',
+#         }
+#         form = UserRegistrationForm(data=data)
+#         self.assertFalse(form.is_valid())
+#         self.assertIn('email', form.errors)
+#
+#     def test_duplicate_username(self):
+#         # Test for duplicate username
+#         existing_user = User.objects.create(username='existinguser', email='existing@example.com')
+#         data = {
+#             'username': 'existinguser',
+#             'first_name': 'New',
+#             'last_name': 'User',
+#             'email': 'newuser@example.com',
+#             'password1': 'newpassword',
+#             'password2': 'newpassword',
+#         }
+#         form = UserRegistrationForm(data=data)
+#         self.assertFalse(form.is_valid())
+#         self.assertIn('username', form.errors)
+
+class SortingFormTest(TestCase):
+    def test_valid_sorting_form(self):
+        data = {'sorting_option': 'price_low_high'}
+        form = SortingForm(data=data)
+        self.assertTrue(form.is_valid())
+
+    def test_invalid_sorting_form(self):
+        data = {'sorting_option': 'invalid_option'}
+        form = SortingForm(data=data)
+        self.assertFalse(form.is_valid())
+        self.assertIn('sorting_option', form.errors)
+
+class BrandFormTest(TestCase):
+    def test_valid_brand_form(self):
+        brand1 = Brand.objects.create(name='Brand1')
+        brand2 = Brand.objects.create(name='Brand2')
+        data = {'brand_choices': [brand1.pk, brand2.pk]}
+        form = BrandForm(data=data)
+        self.assertTrue(form.is_valid())
+
+    def test_invalid_brand_form(self):
+        # Test for invalid brand choices
+        data = {'brand_choices': [999, 888]}
+        form = BrandForm(data=data)
+        self.assertFalse(form.is_valid())
+        self.assertIn('brand_choices', form.errors)
