@@ -5,7 +5,7 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from django.urls import reverse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
-from .models import Perfume, Brand, Cart
+from .models import Perfume, Brand, Cart, Ingredient
 from .forms import CustomAuthenticationForm, UserRegistrationForm, BrandForm, SortingForm
 
 
@@ -317,3 +317,53 @@ class BrandFormTest(TestCase):
         form = BrandForm(data=data)
         self.assertFalse(form.is_valid())
         self.assertIn('brand_choices', form.errors)
+
+class PerfumeModelTest(TestCase):
+
+    def setUp(self):
+        # Create a Brand for testing
+        self.brand = Brand.objects.create(name='Test Brand')
+
+        # Create Ingredients for testing
+        self.ingredient1 = Ingredient.objects.create(name='Ingredient 1')
+        self.ingredient2 = Ingredient.objects.create(name='Ingredient 2')
+
+    def test_perfume_creation(self):
+        # Create a Perfume instance
+        perfume = Perfume.objects.create(
+            name='Test Perfume',
+            description='Test Description',
+            image='path/to/test/image.jpg',
+            price=50,
+            volume=100,
+            url_name='test-perfume',
+            brand=self.brand,
+        )
+
+        # Add ingredients to the perfume
+        perfume.ingredients.add(self.ingredient1, self.ingredient2)
+
+        # Check if the perfume was created successfully
+        self.assertEqual(perfume.name, 'Test Perfume')
+        self.assertEqual(perfume.description, 'Test Description')
+        self.assertEqual(perfume.price, 50)
+        self.assertEqual(perfume.volume, 100)
+        self.assertEqual(perfume.url_name, 'test-perfume')
+        self.assertEqual(perfume.brand, self.brand)
+        self.assertIn(self.ingredient1, perfume.ingredients.all())
+        self.assertIn(self.ingredient2, perfume.ingredients.all())
+
+    def test_perfume_str_representation(self):
+        # Create a Perfume instance
+        perfume = Perfume.objects.create(
+            name='Test Perfume',
+            description='Test Description',
+            image='path/to/test/image.jpg',
+            price=50,
+            volume=100,
+            url_name='test-perfume',
+            brand=self.brand,
+        )
+
+        # Check the __str__ representation
+        self.assertEqual(str(perfume), 'Test Perfume')
