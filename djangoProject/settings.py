@@ -38,7 +38,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'le_bel_homme.apps.LeBelHommeConfig',
+    'rest_framework',
+    'rest_framework_simplejwt',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+    )
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
